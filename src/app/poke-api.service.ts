@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 
 export class PokeApiService {
 
-  listePokemon = 'https://pokeapi.co/api/v2/pokemon';
+  apiURL = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) { }
 
   getPokemonList() {
-    return this.http.get(this.listePokemon);
+    return this.http.get(this.apiURL);
   }
 
-  getPokemonDetail(pokeId: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(this.listePokemon + '/' + pokeId);
+  getPokemonDetail(pokeId: string | number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.apiURL}/${pokeId}`);
   }
 }

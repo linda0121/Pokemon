@@ -10,7 +10,7 @@ import { Pokemon } from '../pokemon';
 export class MyComponentComponent {
   pokemon: Pokemon;
   listPokemon: any[];
-  pokemonChoisit: number;
+  pokemonChoisit: string;
   entree = '';
 
  constructor(private service: PokeApiService) {
@@ -21,9 +21,11 @@ export class MyComponentComponent {
    });
  }
 
-  displayPokemonId() {
-    this.service.getPokemonDetail(this.entree)
-    .subscribe((pokemon: Pokemon) => this.pokemon = pokemon);
+  displayPokemonId(param: string | number) {
+    this.service.getPokemonDetail(param || this.entree)
+    .subscribe((pokemon: Pokemon) => {
+      this.pokemon = pokemon;
+    });
 
   }
 }

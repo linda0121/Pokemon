@@ -1,0 +1,11 @@
+<label for="pokemon-select">Choose a pokemon </label>
+<p>
+  <button type="button" (click)="displayPokemonId()">GO!</button>
+</p>
+ <label for="pokemon-select">Choose a pokemon </label>
+ <select id="pokemon-select" [(ngModel)]="entree" (change)="displayPokemonId()">
+    <option *ngFor="let pokemon of (listPokemon | filterPokemonPipe:'name':entree)" value="{{pokemon.url}}">{{pokemon.name}}</option>
+  </select>
+ PokemonDetails(){
+      
+    }
